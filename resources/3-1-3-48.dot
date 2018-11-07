@@ -1,0 +1,31 @@
+digraph {
+  rankdir = LR;
+  bgcolor = transparent;
+
+  stage0 [label="Stage 0\nStrawman"]
+  stage0 -> stage0desc [arrowhead=none color=chocolate4]
+  stage0desc [shape=rectangle, color=chocolate4 fontcolor=chocolate4 label="21 proposals"]
+  {rank=same; stage0, stage0desc}
+
+  stage1 [label="Stage 1\nProposal"]
+  stage1 -> stage1desc [arrowhead=none color=chocolate4]
+  stage1desc [shape=rectangle, color=chocolate4 fontcolor=chocolate4 label="44 proposals"]
+  {rank=same; stage1, stage1desc}
+
+  stage2 [label="Stage 2\nDraft"]
+  stage2 -> stage2desc [arrowhead=none color=chocolate4]
+  stage2desc [shape=rectangle, color=chocolate4 fontcolor=chocolate4 label="17 proposals"]
+  {rank=same; stage2, stage2desc}
+
+  stage3 [label="Stage 3\nCandidate"]
+  stage3 -> stage3desc [arrowhead=none color=chocolate4]
+  stage3desc [shape=rectangle, color=chocolate4 fontcolor=chocolate4 label="14 proposals"]
+  {rank=same; stage3, stage3desc}
+
+  stage4 [label="Stage 4\nFinished"]
+  stage4 -> stage4desc [arrowhead=none color=chocolate4]
+  stage4desc [shape=rectangle, color=chocolate4 fontcolor=chocolate4 label="2 proposals"]
+  {rank=same; stage4, stage4desc}
+
+  stage0 -> stage1 -> stage2 -> stage3 -> stage4
+}

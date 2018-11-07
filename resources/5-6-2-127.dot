@@ -1,0 +1,11 @@
+digraph {
+  rankdir = LR;
+  bgcolor = transparent;
+  user -> auth -> FireUser
+  auth -> Facebook
+  auth -> Github
+  auth -> Google
+
+  FireUser [label="Internal\nFirebase app\nuser"]
+  auth [label = "Firebase\nAuthentication"]
+}

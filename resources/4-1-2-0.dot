@@ -1,0 +1,29 @@
+digraph {
+  bgcolor = transparent;
+
+  Firebase -> Auth;
+  Firebase -> Functions;
+  Firebase -> Storage;
+  Firebase -> Hosting;
+  Firebase -> Realtime;
+  Firebase -> Firestore;
+
+
+  Auth -> Authdesc [color=chocolate4 arrowhead=none]
+  Authdesc [shape=box color=chocolate4 fontcolor=chocolate4 label="Authentication\nand authorisation"]
+
+  Functions -> Functionsdesc [color=chocolate4 arrowhead=none]
+  Functionsdesc [shape=box color=chocolate4 fontcolor=chocolate4 label="\"server\" side code"]
+
+  Hosting -> Hostingdesc [color=chocolate4 arrowhead=none]
+  Hostingdesc [shape=box color=chocolate4 fontcolor=chocolate4 label="Web content\nhosting"]
+
+  Storage -> Storagedesc [color=chocolate4 arrowhead=none]
+  Storagedesc [shape=box color=chocolate4 fontcolor=chocolate4 label="User generated\nfile hosting"]
+
+  Realtime -> Realtimedesc [color=chocolate4 arrowhead=none]
+  Realtimedesc [shape=box color=chocolate4 fontcolor=chocolate4 label="Original database"]
+
+  Firestore -> Firestoredesc [color=chocolate4 arrowhead=none]
+  Firestoredesc [shape=box color=chocolate4 fontcolor=chocolate4 label="New database,\nstill beta"]
+}

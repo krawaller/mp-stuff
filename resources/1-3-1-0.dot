@@ -1,0 +1,30 @@
+digraph {
+  rankdir = LR;
+  bgcolor = transparent;
+
+  subgraph cluster_seven {
+    label = "Wednesday nov 7th";
+    NodeJS -> Express -> Firebase;
+  }
+
+  subgraph cluster_eight {
+    label = "Thursday nov 8th"
+    Firebase2 -> Ember3
+  }
+
+  subgraph cluster_twenty {
+    label = "Tuesday nov 20th"
+    Redis
+  }
+
+  subgraph cluster_twentyone {
+    label = "Wednesday nov 21st"
+    Redis2
+  }
+
+  Firebase -> Firebase2
+  Ember3 -> Redis -> Redis2
+
+  Firebase2 [label="More\nFirebase"]
+  Redis2 [label="More\nRedis"]
+}

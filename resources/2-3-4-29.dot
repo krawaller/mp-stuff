@@ -1,0 +1,8 @@
+digraph executionGraphG {
+  g2 [label="f(g(1))"]
+  g1 [label="f(g(0))"]
+  g0 [label="f(0)"]
+
+  g2 -> g1 [label="g(1)"]
+  g1 -> g0 [label="g(0)"]
+}

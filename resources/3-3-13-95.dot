@@ -1,0 +1,8 @@
+digraph {
+  bgcolor = transparent;
+  rankdir = LR;
+  file -> method -> metadata
+  method -> body
+
+  method [shape=rectangle]
+}

@@ -1,0 +1,9 @@
+digraph {
+  bgcolor = transparent;
+  rankdir = LR;
+  markdown -> generator -> HTML
+
+  markdown [label="markdown\nsource files"]
+  HTML [label="HTML\nfiles"]
+  generator [shape=box]
+}

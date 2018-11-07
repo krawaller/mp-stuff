@@ -1,0 +1,15 @@
+digraph {
+  rankdir = LR
+  bgcolor = transparent
+
+  math -> Carl
+  writing -> Carl
+  cooking -> Carl
+  beer -> Carl
+
+  Carl -> Compilers
+  Carl -> Parsers
+  Carl -> Types
+
+  Types [label="Type systems"]
+}

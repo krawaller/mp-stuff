@@ -1,0 +1,22 @@
+digraph {
+  rankdir = LR
+  bgcolor=transparent
+  markdown -> reader -> JSON -> templater -> HTML -> pager -> definitions -> writer -> files
+  reader, templater, pager, writer [shape=box]
+
+  reader -> readerdesc [color=chocolate4 arrowhead=none]
+  readerdesc [shape=box color=chocolate4 fontcolor=chocolate4 label="reads all files,\nprocesses YAML\nand markdown"]
+  {rank=same; readerdesc, reader}
+
+  templater -> templaterdesc [color=chocolate4 arrowhead=none]
+  templaterdesc [shape=box color=chocolate4 fontcolor=chocolate4 label="surrounds processed\nmarkdown in valid html\npage, also index"]
+  {rank=same; templaterdesc, templater}
+
+  pager -> pagerdesc [color=chocolate4 arrowhead=none]
+  pagerdesc [shape=box color=chocolate4 fontcolor=chocolate4 label="generates list of\nfile names and contents"]
+  {rank=same; pagerdesc, pager}
+
+  writer -> writerdesc [color=chocolate4 arrowhead=none]
+  writerdesc [shape=box color=chocolate4 fontcolor=chocolate4 label="Actually creates\nthe new files"]
+  {rank=same; writerdesc, writer}
+}

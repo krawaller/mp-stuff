@@ -1,0 +1,34 @@
+.reveal section img[alt="dot"] {
+  background-color: #eee;
+  border-radius: 13px;
+  padding: 7px;
+}
+
+/*
+The Equality boxes are also prevalent throughout
+*/
+.reveal .equality {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reveal .equality img {
+  border: 0;
+  height: 140px;
+  display: inline-block;
+  background: none;
+  box-shadow: none;
+}
+
+.reveal .equality span {
+  display: inline-block;
+  padding: 0 15px;
+  font-size: 70px;
+}
+
+.reveal section img[src="resources/images/firebaselogo.png"] {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}

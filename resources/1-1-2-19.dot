@@ -1,0 +1,13 @@
+digraph {
+  rankdir = LR
+  bgcolor = transparent
+
+  Edument -> Teaching
+  Edument -> Mentorship
+  Edument -> Consulting
+
+  Teaching -> Mentorship [dir=back]
+  Mentorship -> Consulting
+
+  {rank=same; Teaching, Mentorship, Consulting}
+}

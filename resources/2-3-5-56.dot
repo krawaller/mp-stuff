@@ -1,0 +1,9 @@
+digraph {
+  bgcolor = transparent;
+  rankdir = LR;
+  pending -> resolved
+  pending -> rejected
+  pending -> cancelled [style=dashed]
+
+  cancelled [style=dashed]
+}

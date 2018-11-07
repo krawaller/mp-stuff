@@ -1,0 +1,7 @@
+digraph {
+  rankdir = LR;
+  bgcolor = transparent;
+  singlePost -> templatePost -> postHtml
+  allPosts -> templateList -> listHtml
+  templatePost, templateList [shape=box];
+}

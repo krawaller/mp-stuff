@@ -1,0 +1,14 @@
+digraph {
+  bgcolor = transparent;
+  Firebase -> iOS;
+  Firebase -> Android;
+  Firebase -> Java;
+  Firebase -> Python;
+  Firebase -> Go;
+  Firebase -> C;
+  Firebase -> Unity;
+  Firebase -> Web;
+
+  Firebase [label="supported platforms"]
+  C [label="C++"];
+}

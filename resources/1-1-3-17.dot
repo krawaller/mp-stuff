@@ -1,0 +1,27 @@
+digraph {
+  rankdir = LR
+  bgcolor = transparent
+
+  David [label="David\nWaller"]
+
+  singing -> David
+  boardgames -> David
+  metal -> David
+
+  David -> teacher
+  David -> programmer
+
+  teacher -> Edument
+  programmer -> Edument
+
+  programmer -> JS [dir=none color=chocolate4]
+  teacher -> subs [dir=none color=chocolate4]
+
+  JS,subs [shape=box color=chocolate4 fontcolor=chocolate4]
+
+  subs [label="maths, Swedish,\nprogramming"]
+
+  {rank=same;programmer,JS}
+  {rank=same;teacher,subs}
+
+}

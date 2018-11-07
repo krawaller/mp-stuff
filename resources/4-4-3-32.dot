@@ -1,0 +1,12 @@
+digraph {
+  rankdir = LR
+  bgcolor = transparent
+
+  func [shape=box label="function"]
+
+  func:e -> request
+  func:e -> database
+  func:e -> message
+  func:e -> outside
+
+}

@@ -1,0 +1,33 @@
+digraph {
+  rankdir = LR
+  bgcolor=transparent
+
+  subgraph cluster_stepA {
+    label = "Part A"
+
+    readerdesc -> reader [color=chocolate4 arrowhead=none]
+    readerdesc [shape=box color=chocolate4 fontcolor=chocolate4 label="reads all files,\nprocesses YAML\nand markdown"]
+    {rank=same; readerdesc, reader}
+  }
+
+  subgraph cluster_stepB {
+    label = "Part B"
+    templaterdesc -> templater [color=chocolate4 arrowhead=none]
+    templaterdesc [shape=box color=chocolate4 fontcolor=chocolate4 label="surrounds processed\nmarkdown in valid html\npage, also index"]
+    {rank=same; templaterdesc, templater}
+
+    pagerdesc -> pager [color=chocolate4 arrowhead=none]
+    pagerdesc [shape=box color=chocolate4 fontcolor=chocolate4 label="generates list of\nfile names and contents"]
+    {rank=same; pagerdesc, pager}
+
+    writerdesc -> writer [color=chocolate4 arrowhead=none]
+    writerdesc [shape=box color=chocolate4 fontcolor=chocolate4 label="Actually creates\nthe new files"]
+    {rank=same; writerdesc, writer}
+
+    HTML, definitions
+  }
+
+  markdown -> reader -> JSON -> templater -> HTML -> pager -> definitions -> writer -> files
+  reader, templater, pager, writer [shape=box]
+
+}

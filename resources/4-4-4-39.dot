@@ -1,0 +1,13 @@
+digraph {
+  rankdir = LR;
+  bgcolor = transparent;
+
+  myFunc [shape=box label="function"]
+  DB_events
+  DB_manipulations
+
+  DB_events -> myFunc -> DB_manipulations
+
+  DB_events [label="database\nmevents"]
+  DB_manipulations [label="database\nmanipulations"]
+}

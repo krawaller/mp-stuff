@@ -1,0 +1,13 @@
+digraph {
+  bgcolor = transparent;
+
+  Firebase -> Auth;
+  Firebase -> Database;
+  Firebase -> Functions;
+  Firebase -> Storage;
+  Firebase -> Hosting;
+
+  Database -> Realtime;
+  Database -> Firestore;
+
+}

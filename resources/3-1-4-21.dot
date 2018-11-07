@@ -1,0 +1,25 @@
+digraph {
+  bgcolor = transparent;
+  rankdir = LR;
+
+  subgraph cluster_es2015 {
+    label = "ES2015"
+    symbols, iterables, generators, promises
+    {rank=same; generators, promises}
+  }
+
+  subgraph cluster_es2017 {
+    label = "ES2017"
+    async [label="async functions"]
+  }
+
+  subgraph cluster_es2018 {
+    label = "ES2018"
+    asyncgen
+  }
+
+  symbols -> iterables -> generators -> async:w
+  promises -> async:w
+  async -> asyncgen
+  asyncgen [label="async iteration"]
+}

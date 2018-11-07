@@ -1,0 +1,9 @@
+digraph {
+  rankdir = LR
+  bgcolor = transparent
+
+  CRON -> function
+  storage -> function
+  database -> function
+  outside -> function
+}

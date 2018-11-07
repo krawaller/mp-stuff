@@ -1,0 +1,13 @@
+digraph {
+  rankdir = LR
+  bgcolor = transparent
+
+  func [shape=box label="function"]
+
+  request -> func:w
+  CRON -> func:w
+  storage -> func:w
+  database -> func:w
+  outside -> func:w
+
+}

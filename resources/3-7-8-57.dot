@@ -1,0 +1,26 @@
+digraph {
+  rankdir = LR
+  bgcolor = transparent
+
+  pager, writer [shape=box]
+
+  invis -> pager [style = dashed]
+  invis [style=invis width=0 height=0]
+
+  pager -> definitions -> writer -> files
+  definitions -> express -> urls
+
+  urls [label="URL responses"]
+
+  pager -> pagerdesc [color=chocolate4 arrowhead=none]
+  pagerdesc [shape=box color=chocolate4 fontcolor=chocolate4 label="generates list of\nfile names and contents"]
+  {rank=same; pagerdesc, pager}
+
+  writer -> writerdesc [color=chocolate4 arrowhead=none]
+  writerdesc [shape=box color=chocolate4 fontcolor=chocolate4 label="Actually creates\nthe new files"]
+  {rank=same; writerdesc, writer}
+
+  express -> expressdesc [color=chocolate4 arrowhead=none]
+  expressdesc [shape=box color=chocolate4 fontcolor=chocolate4 label="Our new server"]
+  {rank=same; expressdesc, express}
+}

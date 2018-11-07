@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Baseline</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="icon" type="image/x-icon" href="mc2/images/favicon.ico">
+
+    <link rel="stylesheet" href="mc2/styles/reveal.css">
+    <link rel="stylesheet" href="mc2/styles/theme.css" id="theme">
+    <link rel="stylesheet" href="mc2/styles/code.css">
+    <!--STARTCOURSESPECIFICSTYLES--><link rel="stylesheet" href="styles/stuff.css"><!--ENDCOURSESPECIFICSTYLES-->
+
+    
+  </head>
+
+  <body>
+    <div id="pos"></div>
+    <div class="reveal">
+      <div class="slides">
+        <section class="slide chaptertitle">
+          <div class="slidecontent">
+            <div class="chapternumber"> chapter 2 of 4 </div>
+            <h1>Baseline</h1>
+            <span>common ground</span>
+          </div>
+        </section>
+        
+        <!--STARTSECTIONINDEX--><section class="slide sectionlist">
+  <div class="slidecontent">
+    <h3>Sections in this chapter</h3>
+    <ol>
+    <li><a href="#/2">ECMAScript</a></li>
+<li><a href="#/3">Functional&nbsp;programming</a></li>
+<li><a href="#/4">Map&nbsp;and&nbsp;reduce</a></li>
+<li><a href="#/5">Promises</a></li>
+<li><a href="#/6">Asynchronous&nbsp;functions</a></li>
+    </ol>
+  </div>
+</section>
+<!--ENDSECTIONINDEX-->
+        <!--STARTCHAPTERCONTENT--><!--STARTSECTION1--><section>
+  <section class="slide sectiontitle">
+    <div class="slidecontent">
+      <div class='sectioncount'>Section 1/5</div>
+      <h3>ECMAScript</h3>
+      <p>JS vocabulary</p>
+    </div>
+  </section>
+  <section class="slide" data-pos="2-1-1">
+<span class="pos">2-1-1</span>
+<div class="slidecontent"><p>The <strong>ECMASCript versions</strong>:</p>
+<p><img src="resources/2-1-1-30.svg" alt="dot"></p>
+</div></section><section class="slide" data-pos="2-1-2">
+<span class="pos">2-1-2</span>
+<div class="slidecontent"><p>The <strong>TC39 process</strong>:</p>
+<p><img src="resources/2-1-2-23.svg" alt="dot"></p>
+</div></section><section class="slide" data-pos="2-1-3">
+<span class="pos">2-1-3</span>
+<div class="slidecontent"><p>Current <strong>proposal count</strong> (as of 2018-11-07):</p>
+<p><img src="resources/2-1-3-48.svg" alt="dot"></p>
+</div></section><section class="slide" data-pos="2-1-4">
+<span class="pos">2-1-4</span>
+<div class="slidecontent"><p>There&#39;s a (crude) <strong>proposal overview</strong> at <a href="https://es-overview.netlify.com/">https://es‑overview.netlify.com/</a>.</p>
+</div></section>
+</section>
+<!--ENDSECTION1-->
+<!--STARTSECTION2--><section>
+  <section class="slide sectiontitle">
+    <div class="slidecontent">
+      <div class='sectioncount'>Section 2/5</div>
+      <h3>Functional programming</h3>
+      <p>Jumping down the rabbit hole</p>
+    </div>
+  </section>
+  <section class="slide" data-pos="2-2-1">
+<span class="pos">2-2-1</span>
+<div class="slidecontent"><p>JavaScript is (almost) a <strong>functional language</strong>, which modern JS developers make frequent use of.</p>
+<p>We&#39;ll now <strong>walk through a quick example</strong> to make sure we <strong>understand the power of this paradigm</strong>!</p>
+</div></section><section class="slide" data-pos="2-2-2">
+<span class="pos">2-2-2</span>
+<div class="slidecontent"><p>So - since <strong>functions are first class citizens</strong>, we can <strong>send them around just like any value</strong>.</p>
+<p>Which also means that <strong>a function can take, and/or return, other functions</strong>! Such a function is called a <strong>higher order function</strong>.</p>
+</div></section><section class="slide" data-pos="2-2-3">
+<span class="pos">2-2-3</span>
+<div class="slidecontent"><p>As a contrived <strong>example</strong>, say we have this function:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> spam = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"SPAM!"</span>);
+};
+</code></pre>
+</div></section><section class="slide" data-pos="2-2-4">
+<span class="pos">2-2-4</span>
+<div class="slidecontent"><p>And then we have this <strong>higher order function</strong>:</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">repeater</span>(<span class="hljs-params">func, times</span>) </span>{
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; times; i = i + <span class="hljs-number">1</span>) {
+    func();
+  }
+}
+</code></pre>
+</div></section><section class="slide" data-pos="2-2-5">
+<span class="pos">2-2-5</span>
+<div class="slidecontent"><p>If we <strong>invoke <code>repeater</code></strong> like this:</p>
+<pre><code class="lang-javascript">repeater(spam, <span class="hljs-number">3</span>);
+</code></pre>
+<p>We would <strong>see this in the console</strong>:</p>
+<pre><code><span class="hljs-string">"SPAM!"</span>
+<span class="hljs-string">"SPAM!"</span>
+<span class="hljs-string">"SPAM!"</span>
+</code></pre></div></section><section class="slide" data-pos="2-2-6">
+<span class="pos">2-2-6</span>
+<div class="slidecontent"><p>To show we can also <strong>return new functions</strong>, take a look at this beauty:</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">multiplier</span>(<span class="hljs-params">func, times</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; times; i = i + <span class="hljs-number">1</span>) {
+      func();
+    }
+  };
+}
+</code></pre>
+</div></section><section class="slide" data-pos="2-2-7">
+<span class="pos">2-2-7</span>
+<div class="slidecontent"><p>Did you see the difference? <code>multiplier</code> doesn&#39;t execute the parameter function, but <strong>returns a new function</strong>!</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> tripleSpam = multiplier(spam, <span class="hljs-number">3</span>);
+</code></pre>
+<p>If we <strong>execute the returned function</strong> we get the triple spam:</p>
+<pre><code class="lang-javascript">tripleSpam(); <span class="hljs-comment">// SPAM! SPAM! SPAM!</span>
+</code></pre>
+</div></section><section class="slide" data-pos="2-2-8">
+<span class="pos">2-2-8</span>
+<div class="slidecontent"><p>Functional programming is a <strong>really powerful tool</strong>, and something that is likely to <strong>get you hooked once you have learned it</strong>. We warmly encourage you to explore the subject!</p>
+</div></section>
+</section>
+<!--ENDSECTION2-->
+<!--STARTSECTION3--><section>
+  <section class="slide sectiontitle">
+    <div class="slidecontent">
+      <div class='sectioncount'>Section 3/5</div>
+      <h3>Map and reduce</h3>
+      <p>the functional cornerstones</p>
+    </div>
+  </section>
+  <section class="slide list" data-pos="2-3-1">
+<span class="pos">2-3-1</span>
+<div class="slidecontent">
+<p>For applied functional programming, there are <strong>two list-operating tools</strong> that have a very central position:</p>
+<ul>
+<li><span>a</span>The <strong><code>map</code></strong> method</li>
+<li><span>b</span>The <strong><code>reduce</code></strong> method</li>
+</ul>
+<p>Let&#39;s <strong>take a look at both of these</strong>!</p>
+</div></section><section class="slide num numA" data-pos="2-3-2">
+<span class="pos">2-3-2</span>
+<div class="slidecontent">
+<p>First, <strong><code>map</code></strong>. It takes a <strong>list and an iterator function</strong> as arguments, and <strong>returns a new list</strong>.</p>
+<p><img src="resources/2-3-2-113.svg" alt="dot"></p>
+</div></section><section class="slide" data-pos="2-3-3">
+<span class="pos">2-3-3</span>
+<div class="slidecontent"><p>The <strong>iterator function</strong> that we pass in is <strong>called with each element and the index of that element</strong>, and it should <strong>return a new element</strong> to be used instead:</p>
+<p><img src="resources/2-3-3-165.svg" alt="dot"></p>
+</div></section><section class="slide question" data-pos="2-3-4">
+<span class="pos">2-3-4</span>
+<div class="slidecontent">
+<p>Here&#39;s an example. What will this call return?</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> list = [<span class="hljs-string">"David"</span>, <span class="hljs-string">"Carl"</span>, <span class="hljs-string">"Eric"</span>];
+<span class="hljs-keyword">let</span> newList = list.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">elem</span>) </span>{
+  <span class="hljs-keyword">return</span> elem + <span class="hljs-string">"y Mc"</span> + elem + <span class="hljs-string">"face"</span>;
+});
+</code></pre>
+</div></section><section class="slide answer" data-pos="2-3-5">
+<span class="pos">2-3-5</span>
+<div class="slidecontent">
+<p>Yup, <code>newList</code> will now equal this:</p>
+<pre><code class="lang-javascript">[<span class="hljs-string">"Davidy McDavidface"</span>, <span class="hljs-string">"Carly McCarlFace"</span>, <span class="hljs-string">"Ericy McEricface"</span>];
+</code></pre>
+</div></section><section class="slide" data-pos="2-3-6">
+<span class="pos">2-3-6</span>
+<div class="slidecontent"><p>In essence, <code>.map</code> will <strong>create a new list of the same length</strong>, where <strong>each element is individually transformed</strong> by the iterator.</p>
+</div></section><section class="slide num numB" data-pos="2-3-7">
+<span class="pos">2-3-7</span>
+<div class="slidecontent">
+<p>Now for <strong>.reduce</strong>! It is more powerful, but also harder to grasp.</p>
+</div></section><section class="slide" data-pos="2-3-8">
+<span class="pos">2-3-8</span>
+<div class="slidecontent"><p>Similar to <code>.map</code> it <strong>takes a list and an iterator</strong>, but also a <strong>seed value</strong>. Unlike <code>.map</code> it doesn&#39;t necessarily return a list, instead it can <strong>return any value</strong>.</p>
+<p><img src="resources/2-3-8-172.svg" alt="dot"></p>
+</div></section><section class="slide" data-pos="2-3-9">
+<span class="pos">2-3-9</span>
+<div class="slidecontent"><p>The <strong>iterator function</strong> is called with <strong>each element</strong> and the <strong><code>current value</code></strong> (sometimes called <code>memory</code> or <code>accumulator</code>), and <strong>returns a new value</strong>.</p>
+<p><img src="resources/2-3-9-162.svg" alt="dot"></p>
+</div></section><section class="slide" data-pos="2-3-10">
+<span class="pos">2-3-10</span>
+<div class="slidecontent"><p>The <strong><code>seed</code></strong> that we passed in to <code>.reduce</code> is <strong>used as the <code>current value</code> for the first iterator call</strong>.</p>
+<p>The <strong>result of the <code>.reduce</code> call</strong> is whatever is <strong>returned from the last iterator call</strong>.</p>
+</div></section><section class="slide" data-pos="2-3-11">
+<span class="pos">2-3-11</span>
+<div class="slidecontent"><p>In other words, it looks like this (for a 3-item list):</p>
+<p><img src="resources/2-3-11-57.svg" alt="dot"></p>
+</div></section><section class="slide question" data-pos="2-3-12">
+<span class="pos">2-3-12</span>
+<div class="slidecontent">
+<p>Here&#39;s a classic example - what is <code>something</code>?</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> list = [{ <span class="hljs-attr">name</span>: <span class="hljs-string">"shovel"</span>, <span class="hljs-attr">price</span>: <span class="hljs-number">27</span> }, { <span class="hljs-attr">name</span>: <span class="hljs-string">"bucket"</span>, <span class="hljs-attr">price</span>: <span class="hljs-number">14</span> }];
+
+<span class="hljs-keyword">let</span> something = list.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">mem, elem</span>) </span>{
+  <span class="hljs-keyword">return</span> mem + elem.price;
+}, <span class="hljs-number">0</span>);
+</code></pre>
+</div></section><section class="slide answer" data-pos="2-3-13">
+<span class="pos">2-3-13</span>
+<div class="slidecontent">
+<pre><code><span class="hljs-keyword">let</span> something = <span class="hljs-built_in">list</span>.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">mem, elem</span>) </span>{
+  <span class="hljs-keyword">return</span> mem + elem.price
+}, <span class="hljs-number">0</span>);
+</code></pre><p>We get the <strong>total cost</strong> of the items.</p>
+</div></section><section class="slide question" data-pos="2-3-14">
+<span class="pos">2-3-14</span>
+<div class="slidecontent">
+<p>A somewhat tougher example, with more modern syntax:</p>
+<pre><code><span class="hljs-built_in">let</span> words = [<span class="hljs-string">"Bucket"</span>, <span class="hljs-string">"Pipe"</span>, <span class="hljs-string">"Flower"</span>];
+<span class="hljs-built_in">let</span> something = words.reduce((mem, <span class="hljs-built_in">elem</span>) =&gt; ({
+  ...mem,
+  [<span class="hljs-built_in">elem</span>.<span class="hljs-built_in">length</span>]: (mem[<span class="hljs-built_in">elem</span>.<span class="hljs-built_in">length</span>] || <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>
+}), {});
+</code></pre></div></section><section class="slide answer" data-pos="2-3-15">
+<span class="pos">2-3-15</span>
+<div class="slidecontent">
+<p>It returns an object which counts how many words of each length the list contains:</p>
+<pre><code class="lang-javascript">{
+  <span class="hljs-number">4</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-number">6</span>: <span class="hljs-number">2</span>
+}
+</code></pre>
+</div></section>
+</section>
+<!--ENDSECTION3-->
+<!--STARTSECTION4--><section>
+  <section class="slide sectiontitle">
+    <div class="slidecontent">
+      <div class='sectioncount'>Section 4/5</div>
+      <h3>Promises</h3>
+      <p>Give me your word!</p>
+    </div>
+  </section>
+  <section class="slide" data-pos="2-4-1">
+<span class="pos">2-4-1</span>
+<div class="slidecontent"><p>In JS we usually deal with asynchronisity via <strong>callbacks</strong>:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> bigRedBtn = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"doomsdayBtn"</span>);
+<span class="hljs-keyword">const</span> clickHandler = <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> alert(<span class="hljs-string">"BOOM"</span>);
+
+bigRedBtn.addEventListener(<span class="hljs-string">"click"</span>, clickHandler); <span class="hljs-comment">// &lt;--- callback!</span>
+</code></pre>
+</div></section><section class="slide" data-pos="2-4-2">
+<span class="pos">2-4-2</span>
+<div class="slidecontent"><p>A callback is simply a function that will (potentially) <strong>call back</strong> at some point in the future.</p>
+</div></section><section class="slide" data-pos="2-4-3">
+<span class="pos">2-4-3</span>
+<div class="slidecontent"><p>Sometimes we need to call back with <strong>success or failure</strong>. NodeJS popularised the following pattern:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> fileHandler = <span class="hljs-function">(<span class="hljs-params">err, buffer</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (err) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"OH NO :/ "</span> + err);
+  }
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"file contents: "</span>, buffer.toString());
+};
+
+fs.readFile(filepath, fileHandler);
+</code></pre>
+</div></section><section class="slide" data-pos="2-4-4">
+<span class="pos">2-4-4</span>
+<div class="slidecontent"><p>A <strong>Promises</strong> is an alternative solution to handling future success/failure.</p>
+<p>Instead of taking a callback, an async operation can syncronously return a promise that will eventually <strong>resolve or reject</strong>.</p>
+</div></section><section class="slide" data-pos="2-4-5">
+<span class="pos">2-4-5</span>
+<div class="slidecontent"><p>This translates to the following <strong>state transition</strong>:</p>
+<p><img src="resources/2-4-5-56.svg" alt="dot"></p>
+</div></section><section class="slide" data-pos="2-4-6">
+<span class="pos">2-4-6</span>
+<div class="slidecontent"><p>The user...</p>
+<ul>
+<li>synchronously gets the promise</li>
+<li>attaches callbacks for success and/or failure.</li>
+</ul>
+</div></section><section class="slide" data-pos="2-4-7">
+<span class="pos">2-4-7</span>
+<div class="slidecontent"><p>So instead of this...</p>
+<pre><code class="lang-javascript">readFile(path, (err, data) =&gt; {
+  <span class="hljs-keyword">if</span> (err) handleError(err);
+  <span class="hljs-keyword">else</span> handleData(data));
+}
+</code></pre>
+</div></section><section class="slide" data-pos="2-4-8">
+<span class="pos">2-4-8</span>
+<div class="slidecontent"><p>...we do this...</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> promise = readFile(path);
+promise.then(handleData);
+promise.catch(handleError);
+</code></pre>
+</div></section><section class="slide" data-pos="2-4-9">
+<span class="pos">2-4-9</span>
+<div class="slidecontent"><p>...or simply chain it like this:</p>
+<pre><code class="lang-javascript">readFile(path)
+  .then(handleData)
+  .catch(handleError);
+</code></pre>
+</div></section><section class="slide question" data-pos="2-4-10">
+<span class="pos">2-4-10</span>
+<div class="slidecontent">
+<p>So a whole <strong>complicated abstraction</strong> just to <strong>save a few characters</strong>?!</p>
+</div></section><section class="slide answer" data-pos="2-4-11">
+<span class="pos">2-4-11</span>
+<div class="slidecontent">
+<p>Yes.</p>
+<p>But more <strong>complex asynchronous flow control</strong> patterns can become much easier with promises.</p>
+</div></section><section class="slide" data-pos="2-4-12">
+<span class="pos">2-4-12</span>
+<div class="slidecontent"><p>For example, parallellising:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> data = {};
+
+<span class="hljs-keyword">const</span> maybeFinalize = <span class="hljs-function">(<span class="hljs-params">resp, which</span>) =&gt;</span> {
+  data[which] = resp;
+  <span class="hljs-keyword">if</span> (data.A &amp;&amp; data.B &amp;&amp; data.C) {
+    finalize(data.A, data, B, data.C);
+  }
+};
+
+fetch(urlA, resp =&gt; maybeFinalize(resp, <span class="hljs-string">"A"</span>));
+fetch(urlB, resp =&gt; maybeFinalize(resp, <span class="hljs-string">"A"</span>));
+fetch(urlC, resp =&gt; maybeFinalize(resp, <span class="hljs-string">"A"</span>));
+</code></pre>
+</div></section><section class="slide" data-pos="2-4-13">
+<span class="pos">2-4-13</span>
+<div class="slidecontent"><p>With promises that could become:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">Promise</span>.all([fetch(urlA), fetch(urlB), fetch(urlC)]).then(finalize);
+</code></pre>
+</div></section><section class="slide" data-pos="2-4-14">
+<span class="pos">2-4-14</span>
+<div class="slidecontent"><p>Promises are <strong>created</strong> like this:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    resolve(<span class="hljs-string">"3 seconds have passed!"</span>);
+  }, <span class="hljs-number">3000</span>);
+});
+</code></pre>
+</div></section><section class="slide" data-pos="2-4-15">
+<span class="pos">2-4-15</span>
+<div class="slidecontent"><p>Note that you <strong>rarely need to do that</strong>.</p>
+<p>Mostly we&#39;ll just use API:s that return promises.</p>
+</div></section><section class="slide" data-pos="2-4-16">
+<span class="pos">2-4-16</span>
+<div class="slidecontent"><pre><code class="lang-javascript">bigRedBtn.addEventListener(<span class="hljs-string">"click"</span>, clickHandler);
+</code></pre>
+</div></section><section class="slide question" data-pos="2-4-17">
+<span class="pos">2-4-17</span>
+<div class="slidecontent">
+<p>But, when a callback can be called <strong>more than once</strong>, like a clickhandler...</p>
+<p>...then <strong>promises doesn&#39;t make sense</strong>?</p>
+</div></section><section class="slide answer" data-pos="2-4-18">
+<span class="pos">2-4-18</span>
+<div class="slidecontent">
+<p>Indeed not! The promise can only represent a <strong>single asynchronous value</strong>.</p>
+<p>To represent <strong>many async values</strong> we can use a <strong>stream</strong>:</p>
+<p><img src="resources/2-4-18-147.svg" alt="dot"></p>
+<p>But that&#39;s a totally different story!</p>
+</div></section><section class="slide" data-pos="2-4-19">
+<span class="pos">2-4-19</span>
+<div class="slidecontent"><p>Finally, you should know that <strong>promises are contested</strong>.</p>
+<p>Read more in the <a href="https://medium.com/@avaq/broken-promises-2ae92780f33">Broken promises blogpost</a>.</p>
+</div></section>
+</section>
+<!--ENDSECTION4-->
+<!--STARTSECTION5--><section>
+  <section class="slide sectiontitle">
+    <div class="slidecontent">
+      <div class='sectioncount'>Section 5/5</div>
+      <h3>Asynchronous functions</h3>
+      <p>Async await</p>
+    </div>
+  </section>
+  <section class="slide" data-pos="2-5-1">
+<span class="pos">2-5-1</span>
+<div class="slidecontent"><p>When we deal with <strong>more than one promise</strong>, things quickly get hairy:</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getInvocationOdds</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> fetch(<span class="hljs-string">"/api/alignedPlanet"</span>).then(<span class="hljs-function"><span class="hljs-params">planetId</span> =&gt;</span> {
+    <span class="hljs-keyword">return</span> fetch(<span class="hljs-string">`/api/planetFavourability/<span class="hljs-subst">${planetId}</span>`</span>).then(<span class="hljs-function"><span class="hljs-params">favourability</span> =&gt;</span> {
+      <span class="hljs-keyword">return</span> favourability * <span class="hljs-number">100</span>;
+    });
+  });
+}
+</code></pre>
+</div></section><section class="slide" data-pos="2-5-2">
+<span class="pos">2-5-2</span>
+<div class="slidecontent"><p>Using <strong>async functions</strong>, this can be rewritten as:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getInvocationOdds</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> planetId = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">"/api/alignedPlanet"</span>);
+  <span class="hljs-keyword">const</span> favourability = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">`/api/planetFavourability/<span class="hljs-subst">${planetId}</span>`</span>);
+  <span class="hljs-keyword">return</span> favourability * <span class="hljs-number">100</span>;
+}
+</code></pre>
+</div></section><section class="slide" data-pos="2-5-3">
+<span class="pos">2-5-3</span>
+<div class="slidecontent"><p>An <strong>async function</strong>...</p>
+<ul>
+<li>is <strong>defined</strong> with the <strong><code>async</code> prefix</strong></li>
+<li>lets you <strong>wait for promises</strong> with <strong><code>yield</code></strong></li>
+<li><strong>returns a promise</strong></li>
+</ul>
+</div></section><section class="slide" data-pos="2-5-4">
+<span class="pos">2-5-4</span>
+<div class="slidecontent"><p>In other words, they let us <strong>write asynch code more neatly</strong>.</p>
+</div></section><section class="slide" data-pos="2-5-5">
+<span class="pos">2-5-5</span>
+<div class="slidecontent"><p>More newish features can be found in the <strong>ES2015 appendix</strong>.</p>
+</div></section>
+</section>
+<!--ENDSECTION5--><!--ENDCHAPTERCONTENT-->
+        
+
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var basehref = window.location.href.replace(/chapter\d.*?$/,'')
+
+      document.addEventListener("keydown",function(e){
+        var code = e.which || e.keyCode;
+        if (code===13){
+          window.location.href = basehref+"index.html?from="+(2-1);
+        } else if (code >= 49 && code <= 5+48) {
+          window.location.hash = "#/" + (code-48+1+0);
+        }
+        if (2 < 4) {
+          if (code===99){ // the letter C for next Chapter
+            window.location.href = basehref+"chapter"+(2+1)+".html"
+          }
+        }
+      });
+    </script>
+    <script src="mc2/scripts/head.js" type="text/javascript"></script>
+    <script src="mc2/scripts/reveal.js" type="text/javascript"></script>
+    <script src="mc2/scripts/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    showNotes: false,
+    transition: 'slide',
+    dependencies: [
+      { src: 'mc2/scripts/plugin/notes/notes.js', async: true }
+    ]
+  })
+
+    window.onload = function(){
+
+      var links = document.querySelectorAll("a.link");
+      for(var i=0;i<links.length;i++){
+        var link = links[i];
+        link.innerHTML = link.innerHTML.replace(/ /g,'&nbsp;')
+      }
+      var posElem = document.getElementById('pos')
+      function updateReference(){
+        setTimeout(function(){
+          var currentpos = document.querySelector('section.present[data-pos]')
+          if (currentpos){
+            posElem.innerHTML = currentpos.getAttribute('data-pos')
+          } else {
+            posElem.innerHTML = ''
+          }
+          if (document.querySelector('.present.chaptertitle')){
+            document.body.classList.add('atchaptertitle');
+          } else {
+            document.body.classList.remove('atchaptertitle');
+          }
+        },10)
+      }
+
+      window.addEventListener("hashchange",updateReference);
+
+      updateReference();
+    };
+
+    </script>
+    <!--STARTCOURSESPECIFICSCRIPTS--><!--ENDCOURSESPECIFICSCRIPTS-->
+  </body>
+</html>
